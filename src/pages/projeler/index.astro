@@ -9,9 +9,11 @@ const projects = (await getCollection('projeler'))
 <Base title="Projeler" description="Üzerinde çalıştığım projeler ve portfolyom.">
   <h1>Projeler</h1>
   <p class="muted">Üzerinde çalıştığım ve tamamladığım işler.</p>
-  <ul class="list grid-2" style="margin-top:2rem">
-    {projects.map((p) => (
-      <li><PostCard href={`/projeler/${p.id}/`} {...p.data} /></li>
-    ))}
-  </ul>
+  {projects.length > 0 ? (
+    <ul class="list grid-2" style="margin-top:2rem">
+      {projects.map((p) => (
+        <li><PostCard href={`/projeler/${p.id}/`} {...p.data} /></li>
+      ))}
+    </ul>
+  ) : <p class="empty" style="margin-top:2rem">Henüz proje eklenmedi. Projeler yakında burada olacak.</p>}
 </Base>

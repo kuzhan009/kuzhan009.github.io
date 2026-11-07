@@ -1,17 +1,14 @@
 // Sitenin genel bilgileri. Kendi bilgilerinizi buraya yazın.
 export const SITE = {
-  name: 'Adınız Soyadınız',
-  role: 'Mesleğiniz / Unvanınız',
-  title: 'Adınız Soyadınız',
-  description: 'Yazılar, projeler ve mesleki deneyimlerim.',
-  intro:
-    'Merhaba! Burası kişisel sitem. İlgi duyduğum konular hakkında yazılar yazıyor, üzerinde çalıştığım projeleri paylaşıyorum.',
-  email: 'ornek@eposta.com',
-  location: 'Şehir, Türkiye',
-  social: [
-    { label: 'GitHub', url: 'https://github.com/kuzhan009' },
-    { label: 'LinkedIn', url: 'https://www.linkedin.com/' },
-  ],
+  name: 'Ahmet Kuzhan',
+  role: 'Elektrik-Elektronik Mühendisi',
+  title: 'Ahmet Kuzhan',
+  description: 'Ahmet Kuzhan – Elektrik-Elektronik Mühendisi. Yazılar, projeler ve mesleki deneyim.',
+  // Ana sayfadaki kısa tanıtım. Boş bırakılırsa gösterilmez.
+  intro: '',
+  email: 'ahmetkuzhan009@icloud.com',
+  // LinkedIn, Instagram vb. buraya eklenir: { label: 'LinkedIn', url: 'https://...' }
+  social: [{ label: 'GitHub', url: 'https://github.com/kuzhan009' }],
 };
 
 export function formatDate(date: Date) {

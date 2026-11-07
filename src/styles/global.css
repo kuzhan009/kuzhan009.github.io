@@ -93,3 +93,6 @@ main { padding: 3rem 0 4rem; }
 .timeline li::before { content: ''; position: absolute; left: -7px; top: .55rem; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); }
 .timeline h3 { margin: 0; font-size: 1.1rem; }
 .skills { display: flex; flex-wrap: wrap; gap: .5rem; list-style: none; padding: 0; }
+
+/* Henüz içerik olmayan bölümler */
+.empty { border: 1px dashed var(--line); border-radius: var(--radius); padding: 1.2rem 1.3rem; color: var(--muted); margin: 0; }

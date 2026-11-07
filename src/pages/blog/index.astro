@@ -9,9 +9,11 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
 <Base title="Yazılar" description="İlgi duyduğum konular hakkında yazılar.">
   <h1>Yazılar</h1>
   <p class="muted">İlgi duyduğum konular hakkında düşüncelerim ve notlarım.</p>
-  <ul class="list" style="margin-top:2rem">
-    {posts.map((p) => (
-      <li><PostCard href={`/blog/${p.id}/`} {...p.data} /></li>
-    ))}
-  </ul>
+  {posts.length > 0 ? (
+    <ul class="list" style="margin-top:2rem">
+      {posts.map((p) => (
+        <li><PostCard href={`/blog/${p.id}/`} {...p.data} /></li>
+      ))}
+    </ul>
+  ) : <p class="empty" style="margin-top:2rem">Henüz yazı yok. İlk yazılar yakında burada olacak.</p>}
 </Base>

@@ -15,10 +15,10 @@ const projects = (await getCollection('projeler'))
   <section class="hero">
     <h1>{SITE.name}</h1>
     <p class="role">{SITE.role}</p>
-    <p class="intro">{SITE.intro}</p>
+    {SITE.intro && <p class="intro">{SITE.intro}</p>}
     <div class="buttons">
-      <a class="btn primary" href="/projeler/">Projelerim</a>
-      <a class="btn" href="/hakkimda/">Hakkımda</a>
+      <a class="btn primary" href="/hakkimda/">Hakkımda</a>
+      <a class="btn" href={`mailto:${SITE.email}`}>İletişime geç</a>
     </div>
   </section>
 
@@ -26,19 +26,23 @@ const projects = (await getCollection('projeler'))
     <h2>Son yazılar</h2>
     <a href="/blog/">Tümü →</a>
   </div>
-  <ul class="list">
-    {posts.map((p) => (
-      <li><PostCard href={`/blog/${p.id}/`} {...p.data} /></li>
-    ))}
-  </ul>
+  {posts.length > 0 ? (
+    <ul class="list">
+      {posts.map((p) => (
+        <li><PostCard href={`/blog/${p.id}/`} {...p.data} /></li>
+      ))}
+    </ul>
+  ) : <p class="empty">İlk yazılar yakında burada olacak.</p>}
 
   <div class="section-head">
     <h2>Öne çıkan projeler</h2>
     <a href="/projeler/">Tümü →</a>
   </div>
-  <ul class="list grid-2">
-    {projects.map((p) => (
-      <li><PostCard href={`/projeler/${p.id}/`} {...p.data} /></li>
-    ))}
-  </ul>
+  {projects.length > 0 ? (
+    <ul class="list grid-2">
+      {projects.map((p) => (
+        <li><PostCard href={`/projeler/${p.id}/`} {...p.data} /></li>
+      ))}
+    </ul>
+  ) : <p class="empty">Projeler yakında burada olacak.</p>}
 </Base>

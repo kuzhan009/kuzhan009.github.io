@@ -2,23 +2,38 @@
 import Base from '../layouts/Base.astro';
 import { SITE } from '../site';
 
-// Deneyim, eğitim ve yetenekler: kendi bilgilerinizle değiştirin.
+// Deneyim ve eğitim: en yenisi en üstte.
 const experience = [
-  { title: 'Unvan', place: 'Şirket Adı', period: '2023 – Günümüz', text: 'Bu görevde yaptığınız işleri ve başarılarınızı kısaca anlatın.' },
-  { title: 'Önceki Unvan', place: 'Önceki Şirket', period: '2020 – 2023', text: 'Sorumluluklarınız, kullandığınız araçlar, öne çıkan sonuçlar.' },
+  {
+    title: 'Üretim Mühendisi',
+    place: 'Teknomelt Teknik Mensucat A.Ş.',
+    period: 'Nisan 2026 – Günümüz',
+    text: 'Üretim geliştirme ve süreç optimizasyonu üzerine çalışıyorum.',
+  },
+  {
+    title: 'Mühendis',
+    place: 'Balsu Mensucat A.Ş.',
+    period: '',
+    text: '',
+  },
 ];
 const education = [
-  { title: 'Bölüm / Program', place: 'Üniversite Adı', period: '2016 – 2020', text: 'Mezuniyet, dereceler veya önemli dersler.' },
+  {
+    title: 'Elektrik-Elektronik Mühendisliği',
+    place: 'Süleyman Demirel Üniversitesi',
+    period: '2016 – 2020',
+    text: '',
+  },
 ];
-const skills = ['Yetenek 1', 'Yetenek 2', 'Yetenek 3', 'Araç / Teknoloji', 'Yabancı Dil'];
+const skills = ['AutoCAD', 'Fusion 360', 'Python', 'PLC ve Otomasyon', 'Proteus'];
 ---
 <Base title="Hakkımda" description={`${SITE.name} hakkında: deneyim, eğitim ve yetenekler.`}>
   <h1>Hakkımda</h1>
-  <p class="role muted">{SITE.role} · {SITE.location}</p>
+  <p class="role muted">{SITE.role}</p>
   <div class="prose">
     <p>
-      Kendinizi birkaç paragrafta anlatın: ne iş yaptığınızı, nelerle ilgilendiğinizi,
-      sizi neyin heyecanlandırdığını ve şu anda neler üzerinde çalıştığınızı.
+      Elektrik-elektronik mühendisiyim. Teknik tekstil sektöründe üretim mühendisi olarak
+      üretim süreçlerini geliştirmek üzerine çalışıyorum.
     </p>
   </div>
 
@@ -27,8 +42,8 @@ const skills = ['Yetenek 1', 'Yetenek 2', 'Yetenek 3', 'Araç / Teknoloji', 'Yab
     {experience.map((e) => (
       <li>
         <h3>{e.title}</h3>
-        <div class="meta">{e.place} · {e.period}</div>
-        <p>{e.text}</p>
+        <div class="meta">{[e.place, e.period].filter(Boolean).join(' · ')}</div>
+        {e.text && <p>{e.text}</p>}
       </li>
     ))}
   </ul>
@@ -38,8 +53,8 @@ const skills = ['Yetenek 1', 'Yetenek 2', 'Yetenek 3', 'Araç / Teknoloji', 'Yab
     {education.map((e) => (
       <li>
         <h3>{e.title}</h3>
-        <div class="meta">{e.place} · {e.period}</div>
-        <p>{e.text}</p>
+        <div class="meta">{[e.place, e.period].filter(Boolean).join(' · ')}</div>
+        {e.text && <p>{e.text}</p>}
       </li>
     ))}
   </ul>
