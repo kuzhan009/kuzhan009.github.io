@@ -1,0 +1,55 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../site';
+
+// Deneyim, eğitim ve yetenekler: kendi bilgilerinizle değiştirin.
+const experience = [
+  { title: 'Unvan', place: 'Şirket Adı', period: '2023 – Günümüz', text: 'Bu görevde yaptığınız işleri ve başarılarınızı kısaca anlatın.' },
+  { title: 'Önceki Unvan', place: 'Önceki Şirket', period: '2020 – 2023', text: 'Sorumluluklarınız, kullandığınız araçlar, öne çıkan sonuçlar.' },
+];
+const education = [
+  { title: 'Bölüm / Program', place: 'Üniversite Adı', period: '2016 – 2020', text: 'Mezuniyet, dereceler veya önemli dersler.' },
+];
+const skills = ['Yetenek 1', 'Yetenek 2', 'Yetenek 3', 'Araç / Teknoloji', 'Yabancı Dil'];
+---
+<Base title="Hakkımda" description={`${SITE.name} hakkında: deneyim, eğitim ve yetenekler.`}>
+  <h1>Hakkımda</h1>
+  <p class="role muted">{SITE.role} · {SITE.location}</p>
+  <div class="prose">
+    <p>
+      Kendinizi birkaç paragrafta anlatın: ne iş yaptığınızı, nelerle ilgilendiğinizi,
+      sizi neyin heyecanlandırdığını ve şu anda neler üzerinde çalıştığınızı.
+    </p>
+  </div>
+
+  <h2>Deneyim</h2>
+  <ul class="timeline">
+    {experience.map((e) => (
+      <li>
+        <h3>{e.title}</h3>
+        <div class="meta">{e.place} · {e.period}</div>
+        <p>{e.text}</p>
+      </li>
+    ))}
+  </ul>
+
+  <h2>Eğitim</h2>
+  <ul class="timeline">
+    {education.map((e) => (
+      <li>
+        <h3>{e.title}</h3>
+        <div class="meta">{e.place} · {e.period}</div>
+        <p>{e.text}</p>
+      </li>
+    ))}
+  </ul>
+
+  <h2>Yetenekler</h2>
+  <ul class="skills">{skills.map((s) => <li class="tag">{s}</li>)}</ul>
+
+  <h2>İletişim</h2>
+  <p>
+    Bana <a href={`mailto:${SITE.email}`}>{SITE.email}</a> adresinden ulaşabilirsiniz.
+    {SITE.social.map((s) => <> · <a href={s.url}>{s.label}</a></>)}
+  </p>
+</Base>

@@ -1,0 +1,17 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PostCard from '../../components/PostCard.astro';
+
+const projects = (await getCollection('projeler'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+<Base title="Projeler" description="Üzerinde çalıştığım projeler ve portfolyom.">
+  <h1>Projeler</h1>
+  <p class="muted">Üzerinde çalıştığım ve tamamladığım işler.</p>
+  <ul class="list grid-2" style="margin-top:2rem">
+    {projects.map((p) => (
+      <li><PostCard href={`/projeler/${p.id}/`} {...p.data} /></li>
+    ))}
+  </ul>
+</Base>

@@ -1,0 +1,13 @@
+---
+import { formatDate } from '../site';
+interface Props { href: string; title: string; description: string; date: Date; tags?: string[] }
+const { href, title, description, date, tags = [] } = Astro.props;
+---
+<a class="card" href={href}>
+  <div class="meta"><time datetime={date.toISOString()}>{formatDate(date)}</time></div>
+  <h3>{title}</h3>
+  <p>{description}</p>
+  {tags.length > 0 && (
+    <ul class="tags">{tags.map((t) => <li class="tag">{t}</li>)}</ul>
+  )}
+</a>

@@ -1,0 +1,28 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { formatDate } from '../../site';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projeler');
+  return projects.map((project) => ({ params: { slug: project.id }, props: { project } }));
+}
+const { project } = Astro.props;
+const { Content } = await render(project);
+const { title, description, date, tags, link, repo } = project.data;
+---
+<Base title={title} description={description}>
+  <a class="back" href="/projeler/">← Tüm projeler</a>
+  <article>
+    <h1>{title}</h1>
+    <p class="meta"><time datetime={date.toISOString()}>{formatDate(date)}</time></p>
+    {tags.length > 0 && <ul class="tags">{tags.map((t) => <li class="tag">{t}</li>)}</ul>}
+    {(link || repo) && (
+      <div class="buttons">
+        {link && <a class="btn primary" href={link}>Projeyi gör</a>}
+        {repo && <a class="btn" href={repo}>Kaynak kod</a>}
+      </div>
+    )}
+    <div class="prose"><Content /></div>
+  </article>
+</Base>
